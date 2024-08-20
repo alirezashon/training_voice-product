@@ -2,8 +2,8 @@ import { signIn } from 'next-auth/react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-function SignIn() {
-  const [phone, setPhone] = useState('')
+const SignIn = () => {
+  const [phone, setPhone] = useState<number>()
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
   const router = useRouter()
@@ -24,7 +24,7 @@ function SignIn() {
       return
     }
 
-    router.replace('/protected-route')
+    router.replace('/')
   }
 
   return (
@@ -35,7 +35,7 @@ function SignIn() {
           type='text'
           id='phone'
           value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          onChange={(e) => setPhone(parseInt(e.target.value))}
         />
       </div>
       <div>

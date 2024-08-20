@@ -1,11 +1,22 @@
-import { getSession } from 'next-auth/react'
+import { getSession, signOut } from 'next-auth/react'
 import { GetServerSideProps } from 'next'
-import { signOut } from 'next-auth/react'
+import { useEffect } from 'react'
 
-function ProtectedRoute() {
-  const handleLogout = () => {
-    signOut({ callbackUrl: '/signin' })
+const ProtectedRoute = () => {
+  const handleLogout = async () => {
+    await signOut({ redirect: false })
+    document.cookie = 'next-auth.session-token=; Max-Age=0; path=/;' 
+    window.location.href = '/Auth'
   }
+
+  useEffect(() => {
+    ;(async () => {
+      const session = await getSession()
+      if (!session) {
+        window.location.href = '/Auth'
+      }
+    })()
+  }, [])
 
   return (
     <div>
@@ -22,7 +33,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!session) {
     return {
       redirect: {
-        destination: '/signin',
+        destination: '/Auth',
         permanent: false,
       },
     }
