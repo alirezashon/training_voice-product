@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
-import styles from './ProductSlider.module.css'
+import styles from './index.module.css'
+import Image from 'next/image'
 
 interface Product {
   id: number
@@ -14,6 +15,78 @@ interface Product {
 
 const products: Product[] = [
   {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
+    id: 1,
+    title: 'Product 1',
+    image: '/images/product1.png',
+    price: '1,800 تومان',
+    oldPrice: '2,000 تومان',
+    discount: 10,
+    rating: 4.5,
+    reviews: 12,
+  },  {
     id: 1,
     title: 'Product 1',
     image: '/images/product1.png',
@@ -50,7 +123,8 @@ const ProductSlider: React.FC = () => {
       <div className={styles.slider} ref={sliderRef}>
         {products.map((product) => (
           <div key={product.id} className={styles.productBox}>
-            <img src={product.image} alt={product.title} />
+            <Image
+            width={333} height={444} src={product.image} alt={product.title} className={styles.image}/>
             <div className={styles.details}>
               <h3>{product.title}</h3>
               <p className={styles.price}>

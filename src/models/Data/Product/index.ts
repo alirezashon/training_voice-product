@@ -5,16 +5,26 @@ import mongoose from 'mongoose'
 const productSchema = new mongoose.Schema({
   title: { type: String, required: true },
   src: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Image' },
-  subImages: [{ type: Buffer, default: [] }],
   price: { type: Number },
-  categories: String,
-  comments: [{
+  content: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment',
-  }],
+    required: true,
+    ref: 'Content',
+  },
+  writer: String,
+  publishDate: String,
+  categories: String,
+  publisher: String,
+  narrator: String,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment',
+    },
+  ],
   description: { type: String },
   keywords: [{ type: String }],
-  rates:Number
+  rates: Number,
   // price: { type: Number, required: true },
   // calories: { type: Number, required: true },
   // categories: {
